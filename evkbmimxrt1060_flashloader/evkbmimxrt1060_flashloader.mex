@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<configuration name="MIMXRT1062xxxxA" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_12 http://mcuxpresso.nxp.com/XSD/mex_configuration_12.xsd" uuid="1f53a8d6-9205-43bd-b6eb-bba9b9821838" version="12" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <common>
+      <processor>MIMXRT1062xxxxA</processor>
+      <package>MIMXRT1062DVL6A</package>
+      <board>MIMXRT1060-EVK</board>
+      <mcu_data>ksdk2_0</mcu_data>
+      <cores selected="core0">
+         <core name="Cortex-M7F" id="core0" description="M7 core"/>
+      </cores>
+      <description>Configuration imported from evkbmimxrt1060_flashloader</description>
+   </common>
+   <preferences>
+      <validate_boot_init_only>true</validate_boot_init_only>
+      <generate_extended_information>false</generate_extended_information>
+      <generate_code_modified_registers_only>false</generate_code_modified_registers_only>
+      <update_include_paths>true</update_include_paths>
+      <generate_registers_defines>false</generate_registers_defines>
+   </preferences>
+   <tools>
+      <pins name="Pins" version="13.0" enabled="true" update_project_code="true">
+         <pins_profile>
+            <processor_version>13.0.2</processor_version>
+            <pin_labels>
+               <pin_label pin_num="K14" pin_signal="GPIO_AD_B0_12" label="UART1_TXD" identifier="UART1_TXD;TX"/>
+               <pin_label pin_num="L14" pin_signal="GPIO_AD_B0_13" label="UART1_RXD" identifier="UART1_RXD;RX_GPIO;RX"/>
+            </pin_labels>
+            <power_domains/>
+         </pins_profile>
+         <functions_list>
+            <function name="UART1_PollForActivity">
+               <description>Configures pin routing and optionally pin electrical features.</description>
+               <options>
+                  <callFromInitBoot>false</callFromInitBoot>
+                  <coreID>core0</coreID>
+                  <enableClock>false</enableClock>
+               </options>
+               <dependencies>
+                  <dependency resourceType="Peripheral" resourceId="GPIO1" description="Peripheral GPIO1 is not initialized" problem_level="1" source="Pins:UART1_PollForActivity">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:UART1_PollForActivity">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:UART1_PollForActivity">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.igpio" description="Pins initialization requires the IGPIO Driver in the project." problem_level="2" source="Pins:UART1_PollForActivity">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <pins>
+                  <pin peripheral="GPIO1" signal="gpio_io, 13" pin_num="L14" pin_signal="GPIO_AD_B0_13">
+                     <pin_features>
+                        <pin_feature name="identifier" value="RX_GPIO"/>
+                        <pin_feature name="direction" value="INPUT"/>
+                        <pin_feature name="pull_up_down_config" value="Pull_Up_100K_Ohm"/>
+                     </pin_features>
+                  </pin>
+               </pins>
+            </function>
+            <function name="UART1_InitPins">
+               <description>Configures pin routing and optionally pin electrical features.</description>
+               <options>
+                  <callFromInitBoot>false</callFromInitBoot>
+                  <prefix>UART1_</prefix>
+                  <coreID>core0</coreID>
+                  <enableClock>false</enableClock>
+               </options>
+               <dependencies>
+                  <dependency resourceType="Peripheral" resourceId="LPUART1" description="Peripheral LPUART1 is not initialized" problem_level="1" source="Pins:UART1_InitPins">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:UART1_InitPins">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:UART1_InitPins">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <pins>
+                  <pin peripheral="LPUART1" signal="RX" pin_num="L14" pin_signal="GPIO_AD_B0_13">
+                     <pin_features>
+                        <pin_feature name="identifier" value="RX"/>
+                        <pin_feature name="pull_up_down_config" value="Pull_Up_47K_Ohm"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="LPUART1" signal="TX" pin_num="K14" pin_signal="GPIO_AD_B0_12">
+                     <pin_features>
+                        <pin_feature name="identifier" value="TX"/>
+                        <pin_feature name="pull_up_down_config" value="Pull_Up_47K_Ohm"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                     </pin_features>
+                  </pin>
+               </pins>
+            </function>
+            <function name="UART1_RestoreDefault">
+               <description>Configures pin routing and optionally pin electrical features.</description>
+               <options>
+                  <callFromInitBoot>false</callFromInitBoot>
+                  <coreID>core0</coreID>
+                  <enableClock>false</enableClock>
+               </options>
+               <dependencies>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:UART1_RestoreDefault">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:UART1_RestoreDefault">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <pins>
+                  <pin peripheral="GPIO1" signal="gpio_io, 13" pin_num="L14" pin_signal="GPIO_AD_B0_13">
+                     <pin_features>
+                        <pin_feature name="identifier" value="RX"/>
+                        <pin_feature name="pull_up_down_config" value="Pull_Down_100K_Ohm"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO1" signal="gpio_io, 12" pin_num="K14" pin_signal="GPIO_AD_B0_12">
+                     <pin_features>
+                        <pin_feature name="identifier" value="TX"/>
+                        <pin_feature name="pull_up_down_config" value="Pull_Down_100K_Ohm"/>
+                     </pin_features>
+                  </pin>
+               </pins>
+            </function>
+         </functions_list>
+      </pins>
+      <clocks name="Clocks" version="11.0" enabled="false" update_project_code="true">
+         <clocks_profile>
+            <processor_version>N/A</processor_version>
+         </clocks_profile>
+         <clock_configurations/>
+      </clocks>
+      <dcdx name="DCDx" version="3.0" enabled="false" update_project_code="true">
+         <dcdx_profile>
+            <processor_version>N/A</processor_version>
+         </dcdx_profile>
+         <dcdx_configurations/>
+      </dcdx>
+      <periphs name="Peripherals" version="12.0" enabled="false" update_project_code="true">
+         <peripherals_profile>
+            <processor_version>N/A</processor_version>
+         </peripherals_profile>
+         <functional_groups/>
+         <components/>
+      </periphs>
+      <tee name="TEE" version="4.0" enabled="false" update_project_code="true">
+         <tee_profile>
+            <processor_version>N/A</processor_version>
+         </tee_profile>
+      </tee>
+   </tools>
+</configuration>
