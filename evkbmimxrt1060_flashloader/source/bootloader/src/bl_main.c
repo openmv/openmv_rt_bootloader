@@ -336,7 +336,7 @@ static peripheral_descriptor_t const *get_active_peripheral(void)
     get_user_application_entry(&applicationAddress, &stackPointer);
 
     uint64_t lastTicks = 0;    // Value of our last recorded ticks second marker
-    uint64_t timeoutTicks = 0; // The number of ticks we will wait for timeout, 0 means no timeout
+    uint64_t timeoutTicks = 100; // The number of ticks we will wait for timeout, 0 means no timeout
 
     // If the boot to rom option is not set AND there is a valid jump application determine the timeout value
     if (!is_boot_pin_asserted() && is_application_ready_for_executing(applicationAddress))
