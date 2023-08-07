@@ -79,8 +79,8 @@
 #define BL_FEATURE_FLASH_CHECK_CUMULATIVE_WRITE (1)
 
 #define BL_FEATURE_FLEXSPI_NOR_MODULE (1)
-// The FLASH is a QSPI FLASH which supports JESD216 standard, working at 120MHz
-#define BL_FLEXSPI_NOR_CFG_OPT0 (0xc0000006u)
+// The FLASH is a QSPI FLASH which supports JESD216 standard, working at 133MHz
+#define BL_FLEXSPI_NOR_CFG_OPT0 (0xc0000008u)
 #define BL_FLEXSPI_NOR_CFG_OPT1 (0x0u)
 
 #if defined(BL_TARGET_RAM)
